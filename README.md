@@ -3,9 +3,15 @@
 ## Project Setup
 - clone the project on your local
 - Execute `npm install` on the same path as of your root directory of the downloaded project
+<<<<<<< HEAD
 - Create a `.env` file in the root directory and add the following environment variable
    -PORT = 3000
 - Inside the `src/conig` folder create a new file `config.json` and then add the following piece of json
+=======
+-Create a `.env` file in the root directory and add the following environment variable
+   -PORT = 3000
+-Inside the `src/conig` folder create a new file `config.json` and then add the following piece of json
+>>>>>>> 8da65bb77669e4f41ee27f95106b7a71847e42be
 
 ```````````
 {
@@ -19,3 +25,5 @@
 }
 ```````````
 - Once you've addes your db config as listed above, go to the src folder from your terminal and execute `npx sequelize db:create`
+
+`````````````````````````
