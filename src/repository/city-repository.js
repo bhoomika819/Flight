@@ -27,7 +27,7 @@ class CityRepository {
         }
     }
 
-    async updateCity(cityId, data){
+    async updateCity(cityId, data){    // what u want to update,with what value you want to update it
         try {
             const city = await City.update(data, {
                 where: {
