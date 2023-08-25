@@ -31,8 +31,9 @@ const create = async (req,res) => {
 }
 
 //DELETE. -> /city/:id    where :id is a parameter i.e we can call it by req.params
-const destory = async(req,res) => {
+const destroy = async(req,res) => {
     try {
+      //  console.log(req.body,"body  ",req.params.id);
         const response = await cityService.deleteCity(req.params.id);
         return res.status(200).json({
             data: response,
@@ -55,7 +56,7 @@ const destory = async(req,res) => {
 //GET -> /city/:id
 const get = async(req,res) => {
     try {
-        console.log("HI",req.params.id);
+       // console.log("HI",req.params.id);
         const response = await cityService.getCity(req.params.id);
       // const response = await this.cityRepository.getCity(cityId);
     //   const response = await City.findAll({where: { 
@@ -81,7 +82,8 @@ const get = async(req,res) => {
 //Patch -> /city/:id -> req.body
 const update = async(req,res) => {
     try {
-        const response = await cityService.update(req.params.id,req.body);
+      //  console.log("controller  ",req.body," & ",req.params);
+        const response = await cityService.updateCity(req.params.id,req.body);
         return res.status(200).json({
             data: response,
             success: true,
@@ -101,7 +103,7 @@ const update = async(req,res) => {
 
 module.exports ={
     create,
-    destory,
+    destroy,
     get,
     update
 }

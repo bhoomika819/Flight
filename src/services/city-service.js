@@ -16,7 +16,9 @@ class CityService {
     }
 
     async deleteCity(cityId){
+        //console.log("service  ",cityId);
         try {
+           // console.log("inside ",cityId);
             const response = await this.cityRepository.deleteCity(cityId);
             return response;
         } catch (error) {
@@ -27,6 +29,7 @@ class CityService {
 
     async updateCity(cityId , data){
         try {
+           // console.log("city ",cityId," and data ",data);
             const city = await this.cityRepository.updateCity(cityId,data);
             return city;
         } catch (error) {
@@ -37,6 +40,7 @@ class CityService {
 
     async getCity(cityId){
         try {
+            //console.log("Service  ",cityId);
             const city = await this.cityRepository.getCity(cityId);
             return city ;
         } catch (error) {
