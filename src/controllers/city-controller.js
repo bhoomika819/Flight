@@ -1,5 +1,12 @@
 const { CityService} = require("../services/index");
+//const { City } = require("../repository");
+//const City = 'City';
 
+
+/**
+ * POST
+ * data -> req.body
+ */
 const cityService = new CityService();
 
 const create = async (req,res) => {
@@ -10,7 +17,7 @@ const create = async (req,res) => {
             success: true,
             message: "Successfully created a city",
             err: {}
-        })
+        });
     } catch (error) {
         console.log(error);
         return res.status(500).json({
@@ -31,7 +38,7 @@ const destory = async(req,res) => {
             data: response,
             success: true,
             message: "Successfully delete a city",
-            err: error
+            err: {}
         });
     } catch (error) {
         console.log(error);
@@ -48,7 +55,12 @@ const destory = async(req,res) => {
 //GET -> /city/:id
 const get = async(req,res) => {
     try {
+        console.log("HI",req.params.id);
         const response = await cityService.getCity(req.params.id);
+      // const response = await this.cityRepository.getCity(cityId);
+    //   const response = await City.findAll({where: { 
+    //     id: req.params.id
+    // }});
         return res.status(200).json({
             dara: response,
             success: true,
@@ -60,7 +72,7 @@ const get = async(req,res) => {
         return res.status(500).json({
             data: {},
             success: false,
-            message: "Not able to delete a city",
+            message: "Not able to get  a city",
             err: error
         });        
     }
@@ -81,7 +93,7 @@ const update = async(req,res) => {
         return res.status(500).json({
             data: {},
             success: false,
-            message: "Not able to delete a city",
+            message: "Not able to update a city",
             err: error
         });
     }
