@@ -5,6 +5,7 @@ class AirplaneRepository {
       try {
         console.log("getAirplne ",id);
         const airplane = await Airplane.findByPk(id);
+        console.log("Repsoitory ",airplane);
         return airplane;
       } catch (error) {
         console.log("Something went wrong in the repository layer");

@@ -1,4 +1,5 @@
 const {FlightRepository , AirplaneRepository } = require('../repository/index');
+const compareTime  = require('../utils/helper');
 
 class FlightService {
 
@@ -8,16 +9,30 @@ class FlightService {
     }
 
     async createFlight(data) {
-        try { 
-            console.log("Service ",data);
+        console.log("Data ",data);
+        try {
+            console.log("Hello");
+            // if(!compareTime(data.arrivalTime,data.departureTime)){
+            //     throw{ error : 'Arrival time cannot be less than departure time'};
+            // }
             const airplane = await this.airplaneRepository.getAirplane(data.airplaneId);
             console.log("Airplane ",airplane);
             const flight = await this.flightRepsitory.createFlight({
                 ...data, totalSeats:airplane.capacity
             });
-            console.log("Flight ", flight); 
+            console.log("Flight ",flight);
             return flight;
-        }catch (error) {
+        } catch (error) {
+            console.log("Something went wrong in the repository layer");
+            throw {error};
+        }
+    }
+
+    async getAllFlightData(data) {
+        try {
+            const flights = await this.flightRepsitory.getAllFlights(data);
+            return flights;
+        } catch (error) {
             console.log("Something went wrong in the repository layer");
             throw {error};
         }
